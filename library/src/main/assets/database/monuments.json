@@ -1,0 +1,39 @@
+{
+  "monuments": [
+      {
+        "id": 1,
+        "name": "Lincoln Memorial",
+        "country": "United States",
+        "description": "The Lincoln Memorial is an American national monument built to honor the 16th President of the United States, Abraham Lincoln. It is located on the western end of the National Mall in Washington, D.C., across from the Washington Monument. The architect was Henry Bacon; the designer of the primary statue – Abraham Lincoln, 1920 – was Daniel Chester French; the Lincoln statue was carved by the Piccirilli Brothers; and the painter of the interior murals was Jules Guerin. Dedicated in 1922, it is one of several monuments built to honor an American president. It has always been a major tourist attraction and since the 1930s has been a symbolic center focused on race relations.",
+        "image": "washington.jpg"
+      },
+      {
+        "id": 2,
+        "name": "Great Pyramid",
+        "country": "Egypt",
+        "description": "The Great Pyramid of Giza (also known as the Pyramid of Khufu or the Pyramid of Cheops) is the oldest and largest of the three pyramids in the Giza pyramid complex bordering what is now El Giza, Egypt. It is the oldest of the Seven Wonders of the Ancient World, and the only one to remain largely intact.",
+        "image": "pyramid.jpg"
+      },
+      {
+        "id": 3,
+        "name": "Parthenon",
+        "country": "Greece",
+        "description": "he Parthenon (/ˈpɑːrθəˌnɒnˌ -nən/; Ancient Greek: Παρθενών; Modern Greek: Παρθενώνας, Parthenónas) is a former temple, on the Athenian Acropolis, Greece, dedicated to the goddess Athena, whom the people of Athens considered their patron. Construction began in 447 BC when the Athenian Empire was at the peak of its power. It was completed in 438 BC although decoration of the building continued until 432 BC. It is the most important surviving building of Classical Greece, generally considered the zenith of the Doric order. Its decorative sculptures are considered some of the high points of Greek art. The Parthenon is regarded as an enduring symbol of Ancient Greece, Athenian democracy and western civilization, and one of the world's greatest cultural monuments. The Greek Ministry of Culture is currently carrying out a programme of selective restoration and reconstruction to ensure the stability of the partially ruined structure.",
+        "image": "parthenon.jpg"
+      },
+      {
+        "id": 4,
+        "name": "Colosseum",
+        "country": "Italy",
+        "description": "The Colosseum or Coliseum (/kɒləˈsiːəm/ kol-ə-SEE-əm), also known as the Flavian Amphitheatre (Latin: Amphitheatrum Flavium; Italian: Anfiteatro Flavio [amfiteˈaːtro ˈflaːvjo] or Colosseo [kolosˈsɛːo]), is an oval amphitheatre in the centre of the city of Rome, Italy. Built of concrete and sand, it is the largest amphitheatre ever built. The Colosseum is situated just east of the Roman Forum. Construction began under the emperor Vespasian in AD 72, and was completed in AD 80 under his successor and heir Titus. Further modifications were made during the reign of Domitian (81–96). These three emperors are known as the Flavian dynasty, and the amphitheatre was named in Latin for its association with their family name (Flavius).",
+        "image": "colosseum.jpg"
+      },
+      {
+        "id": 5,
+        "name": "Great Wall of China",
+        "country": "China",
+        "description": "The Great Wall of China is a series of fortifications made of stone, brick, tamped earth, wood, and other materials, generally built along an east-to-west line across the historical northern borders of China to protect the Chinese states and empires against the raids and invasions of the various nomadic groups of the Eurasian Steppe. Several walls were being built as early as the 7th century BCE; these, later joined together and made bigger and stronger, are now collectively referred to as the Great Wall. Especially famous is the wall built 220–206 BCE by Qin Shi Huang, the first Emperor of China. Little of that wall remains. Since then, the Great Wall has on and off been rebuilt, maintained, and enhanced; the majority of the existing wall is from the Ming Dynasty (1368–1644).",
+        "image": "china.jpg"
+      }
+    ]
+}
