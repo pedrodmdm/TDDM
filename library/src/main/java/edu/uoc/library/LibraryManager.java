@@ -20,6 +20,7 @@ import edu.uoc.library.utils.LibraryConstants;
  * Created by SGAR810 on 23/09/2016.
  */
 public class LibraryManager {
+    public final static String TAG_PRA = "UOC_PRA";
 
     private static LibraryManager instance;
     private static Context context;
