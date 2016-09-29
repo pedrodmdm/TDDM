@@ -3,19 +3,18 @@ package edu.uoc.monuments.ui.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import edu.uoc.library.LibraryManager;
-import edu.uoc.library.calback.GetCallback;
 import edu.uoc.library.model.Monument;
+import edu.uoc.library.utils.LibraryConstants;
 import edu.uoc.monuments.R;
 import edu.uoc.monuments.ui.adapters.MonumentAdapter;
 import edu.uoc.monuments.utils.ApplicationUtils;
@@ -41,22 +40,31 @@ public class ListMonumentActivity extends AppCompatActivity {
         // Set views
         mListView = (ListView) findViewById(R.id.listView);
         mProgressBar = (ProgressBar) findViewById(R.id.load_progress);
-        mProgressBar.setVisibility(View.VISIBLE);
 
-        LibraryManager.getInstance(getApplicationContext()).getAllMonuments(new GetCallback<List<Monument>>() {
-            @Override
-            public void onSuccess(List<Monument> result) {
-                mProgressBar.setVisibility(View.GONE);
-                updateList(result);
-            }
+        // UOC-BEGIN-CODE1
+//        LibraryManager.getInstance(getApplicationContext()).getAllMonuments(new GetCallback<List<Monument>>() {
+//            @Override
+//            public void onSuccess(List<Monument> result) {
+//                mProgressBar.setVisibility(View.GONE);
+//                Log.d(LibraryConstants.TAG, "Set breakpoint 1");
+//                monumentList.addAll(result);
+//                monumentAdapter.notifyDataSetChanged();
+//            }
+//
+//            @Override
+//            public void onFailure(Throwable e) {
+//                mProgressBar.setVisibility(View.GONE);
+//                Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+//            }
+//        });
+        // UOC-END-CODE1
 
-            @Override
-            public void onFailure(Throwable e) {
-                mProgressBar.setVisibility(View.GONE);
-                Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-
+        // UOC-BEGIN-CODE2
+        monumentList = LibraryManager.getInstance(getApplicationContext()).getAllMonuments();
+        Log.d(LibraryConstants.TAG, "Set breakpoint 2");
+        mProgressBar.setVisibility(View.GONE);
+        // UOC-END-CODE2
+        
         monumentAdapter = new MonumentAdapter(this, monumentList);
         mListView.setAdapter(monumentAdapter);
     }
@@ -84,16 +92,5 @@ public class ListMonumentActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    /**
-     * Method to update the list of monuments
-     * @param result
-     */
-    private void updateList(List<Monument> result) {
-        monumentList.clear();
-        monumentList.addAll(result);
-        monumentAdapter.notifyDataSetChanged();
-
     }
 }

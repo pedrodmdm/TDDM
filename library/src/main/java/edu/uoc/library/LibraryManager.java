@@ -7,6 +7,7 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import edu.uoc.library.calback.GetCallback;
@@ -20,7 +21,6 @@ import edu.uoc.library.utils.LibraryConstants;
  * Created by SGAR810 on 23/09/2016.
  */
 public class LibraryManager {
-    public final static String TAG_PRA = "UOC_PRA";
 
     private static LibraryManager instance;
     private static Context context;
@@ -94,12 +94,14 @@ public class LibraryManager {
      * Method to get all the stored monuments
      */
     public void getAllMonuments(final GetCallback<List<Monument>> callback) {
+        Log.d(LibraryConstants.TAG, "Starting method to get all the stored methods by thread id: " + Thread.currentThread().getId());
         new Thread(new Runnable() {
             public void run() {
                 try {
                     // Hardcoded sleep to simulate a server response
                     Thread.sleep(SLEEP_TIME);
                     Gson gson = new Gson();
+                    Log.d(LibraryConstants.TAG, "Getting the result by thread id: " + Thread.currentThread().getId());
                     final MonumentList monuments = gson.fromJson(
                             FileUtils.getMonumentDatabaseContent(context),
                             MonumentList.class);
@@ -107,6 +109,7 @@ public class LibraryManager {
                     new Handler(context.getMainLooper()).post(new Runnable() {
                         @Override
                         public void run() {
+                            Log.d(LibraryConstants.TAG, "Return the succeed result by thread id: " + Thread.currentThread().getId());
                             callback.onSuccess(monuments.getMonuments());
                         }
                     });
@@ -116,6 +119,7 @@ public class LibraryManager {
                     new Handler(context.getMainLooper()).post(new Runnable() {
                         @Override
                         public void run() {
+                            Log.d(LibraryConstants.TAG, "Return the failed exception by thread id: " + Thread.currentThread().getId());
                             callback.onFailure(e);
                         }
                     });
@@ -127,16 +131,20 @@ public class LibraryManager {
     /**
      * Method to get all the stored monuments
      */
-    public List<Monument> getAllMonuments() {
+    public ArrayList<Monument> getAllMonuments() {
+        Log.d(LibraryConstants.TAG, "Starting method to get all the stored methods by thread id: " + Thread.currentThread().getId());
         try {
             // Hardcoded sleep to simulate a server response
             Thread.sleep(SLEEP_TIME);
             Gson gson = new Gson();
+            Log.d(LibraryConstants.TAG, "Getting the result by thread id: " + Thread.currentThread().getId());
             MonumentList monuments = gson.fromJson(
                     FileUtils.getMonumentDatabaseContent(context),
                     MonumentList.class);
-            return monuments.getMonuments();
+            Log.d(LibraryConstants.TAG, "Return the succeed result by thread id: " + Thread.currentThread().getId());
+            return (ArrayList<Monument>) monuments.getMonuments();
         } catch (Exception e) {
+            Log.d(LibraryConstants.TAG, "Return the failed exception by thread id: " + Thread.currentThread().getId());
             Log.e(LibraryConstants.TAG, e.getMessage());
             return null;
         }

@@ -18,6 +18,7 @@
             </intent-filter>
         </activity>
         <activity android:name="edu.uoc.monuments.ui.activities.ListMonumentActivity"></activity>
+        <activity android:name="edu.uoc.monuments.ui.activities.DetailMonumentActivity"></activity>
     </application>
 
 </manifest>
