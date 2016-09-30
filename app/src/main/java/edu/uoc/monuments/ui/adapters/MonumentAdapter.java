@@ -67,11 +67,12 @@ public class MonumentAdapter extends ArrayAdapter<Monument> {
             viewHolder = (ViewHolder) convertView.getTag();
             view = convertView;
         }
-
+        // Get monument object
+        Monument monument = monumentList.get(position);
         // Set text with the item name
-        viewHolder.mName.setText(monumentList.get(position).getName());
+        viewHolder.mName.setText(monument.getName());
         // Set image
-        Bitmap image = LibraryManager.getInstance(context).getImage(monumentList.get(position).getImagePath());
+        Bitmap image = LibraryManager.getInstance(context).getImage(monument.getImagePath());
         viewHolder.mThumbnail.setImageBitmap(image);
         return view;
     }
