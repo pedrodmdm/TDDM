@@ -49,7 +49,7 @@ public class LibraryManager {
      */
     public void saveMonumentInBackground(
             final String name,
-            final String city,
+            final String country,
             final String description,
             final Bitmap image,
             final SaveCallback callback) {
@@ -59,7 +59,7 @@ public class LibraryManager {
                     // Hardcoded sleep to simulate a server response
                     Thread.sleep(SLEEP_TIME);
                     // Get monument
-                    Monument monument = getMonument(name, city, description, image);
+                    Monument monument = getMonument(name, country, description, image);
                     callback.onSuccess(monument);
                 } catch (Exception e) {
                     Log.e(LibraryConstants.TAG, e.getMessage());
@@ -74,14 +74,14 @@ public class LibraryManager {
      */
     public boolean saveMonument(
             String name,
-            String city,
+            String country,
             String description,
             Bitmap image) {
         try {
             // Hardcoded sleep to simulate a server response
             Thread.sleep(SLEEP_TIME);
             // Get monument
-            Monument monument = getMonument(name, city, description, image);
+            Monument monument = getMonument(name, country, description, image);
             FileUtils.saveMonumentToDatabaseContent(context, monument);
             return true;
         } catch (Exception e) {
@@ -212,14 +212,14 @@ public class LibraryManager {
     /**
      * Return a monument item depending with introduced data
      * @param name
-     * @param city
+     * @param country
      * @param description
      * @param image
      * @return
      */
     private Monument getMonument(
             String name,
-            String city,
+            String country,
             String description,
             Bitmap image) {
         Monument monument = new Monument();
@@ -229,8 +229,8 @@ public class LibraryManager {
                 MonumentList.class).getMonuments().size());
         // Set name
         monument.setName(name);
-        // Set city
-        monument.setName(city);
+        // Set country
+        monument.setCountry(country);
         // Set description
         monument.setName(description);
         // Set image

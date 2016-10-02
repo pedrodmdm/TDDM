@@ -13,8 +13,8 @@ public class Monument {
     @SerializedName("name")
     private String name;
 
-    @SerializedName("city")
-    private String city;
+    @SerializedName("country")
+    private String country;
 
     @SerializedName("description")
     private String description;
@@ -87,18 +87,18 @@ public class Monument {
     }
 
     /**
-     * Method to get the city of the monument
+     * Method to get the country of the monument
      * @return
      */
-    public String getCity() {
-        return city;
+    public String getCountry() {
+        return country;
     }
 
     /**
      * Method to set the city of the monument
-     * @param city
+     * @param country
      */
-    public void setCity(String city) {
-        this.city = city;
+    public void setCountry(String country) {
+        this.country = country;
     }
 }
