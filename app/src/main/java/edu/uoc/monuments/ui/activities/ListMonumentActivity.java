@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -25,7 +26,7 @@ import edu.uoc.monuments.utils.ApplicationUtils;
 /**
  * Created by UOC on 28/09/2016.
  */
-public class ListMonumentActivity extends AppCompatActivity implements View.OnClickListener {
+public class ListMonumentActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     // Views
     private ListView mListView;
@@ -45,7 +46,7 @@ public class ListMonumentActivity extends AppCompatActivity implements View.OnCl
         mProgressBar = (ProgressBar) findViewById(R.id.load_progress);
 
         // Set listeners
-        mListView.setOnClickListener(this);
+        mListView.setOnItemClickListener(this);
 
         // UOC-BEGIN-CODE1
         LibraryManager.getInstance(getApplicationContext()).getAllMonuments(new GetCallback<List<Monument>>() {
@@ -101,7 +102,7 @@ public class ListMonumentActivity extends AppCompatActivity implements View.OnCl
     }
 
     @Override
-    public void onClick(View v) {
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         // TODO: add intent to start DetailMonumentActivity
     }
 }
