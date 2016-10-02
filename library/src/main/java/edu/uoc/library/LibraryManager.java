@@ -59,11 +59,23 @@ public class LibraryManager {
                     // Hardcoded sleep to simulate a server response
                     Thread.sleep(SLEEP_TIME);
                     // Get monument
-                    Monument monument = getMonument(name, country, description, image);
-                    callback.onSuccess(monument);
-                } catch (Exception e) {
+                    final Monument monument = getMonument(name, country, description, image);
+                    // To use callback in the main thread
+                    new Handler(context.getMainLooper()).post(new Runnable() {
+                        @Override
+                        public void run() {
+                            callback.onSuccess(monument);
+                        }
+                    });
+                } catch (final Exception e) {
                     Log.e(LibraryConstants.TAG, e.getMessage());
-                    callback.onFailure(e);
+                    // To use callback in the main thread
+                    new Handler(context.getMainLooper()).post(new Runnable() {
+                        @Override
+                        public void run() {
+                            callback.onFailure(e);
+                        }
+                    });
                 }
             }
         }).start();
@@ -161,18 +173,30 @@ public class LibraryManager {
                     // Hardcoded sleep to simulate a server response
                     Thread.sleep(SLEEP_TIME);
                     Gson gson = new Gson();
-                    MonumentList monuments = gson.fromJson(
+                    final MonumentList monuments = gson.fromJson(
                             FileUtils.getMonumentDatabaseContent(context),
                             MonumentList.class);
-                    for (Monument m : monuments.getMonuments()) {
+                    for (final Monument m : monuments.getMonuments()) {
                         if (m.getId() == id) {
-                            callback.onSuccess(m);
+                            // To use callback in the main thread
+                            new Handler(context.getMainLooper()).post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    callback.onSuccess(m);
+                                }
+                            });
                             break;
                         }
                     }
-                } catch (Exception e) {
+                } catch (final Exception e) {
                     Log.e(LibraryConstants.TAG, e.getMessage());
-                    callback.onFailure(e);
+                    // To use callback in the main thread
+                    new Handler(context.getMainLooper()).post(new Runnable() {
+                        @Override
+                        public void run() {
+                            callback.onFailure(e);
+                        }
+                    });
                 }
             }
         }).start();
